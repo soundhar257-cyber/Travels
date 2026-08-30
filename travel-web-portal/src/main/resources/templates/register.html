@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register - TravelGo</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div th:replace="~{fragments/nav :: nav}"></div>
+
+    <form class="auth-form" action="/register" method="post" th:object="${user}">
+        <h2>Create an account</h2>
+        <div class="error" th:if="${error}" th:text="${error}"></div>
+
+        <label>Full name</label>
+        <input type="text" th:field="*{fullName}" required />
+
+        <label>Email</label>
+        <input type="email" th:field="*{email}" required />
+
+        <label>Phone</label>
+        <input type="text" th:field="*{phone}" />
+
+        <label>Password</label>
+        <input type="password" th:field="*{password}" required minlength="6" />
+
+        <button class="btn" type="submit" style="width:100%">Register</button>
+        <p style="margin-top:14px; font-size:14px;">Already have an account? <a href="/login">Login</a></p>
+    </form>
+</body>
+</html>

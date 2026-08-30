@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book - TravelGo</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div th:replace="~{fragments/nav :: nav}"></div>
+
+    <form class="styled-form" th:action="@{'/booking/new/' + ${travelPackage.id}}" method="post">
+        <h2 th:text="'Book: ' + ${travelPackage.destination}">Book</h2>
+        <div class="price">&#8377; <span th:text="${travelPackage.price}">0</span> / person</div>
+
+        <label>Travel date</label>
+        <input type="date" name="travelDate" required />
+
+        <label>Number of travelers</label>
+        <input type="number" name="numberOfTravelers" min="1" value="1" required />
+
+        <button class="btn" type="submit" style="width:100%">Continue to payment</button>
+    </form>
+</body>
+</html>

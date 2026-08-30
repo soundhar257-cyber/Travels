@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Packages - TravelGo</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div th:replace="~{fragments/nav :: nav}"></div>
+
+    <div class="container">
+        <form action="/packages" method="get" class="search-bar" style="justify-content:flex-start">
+            <input type="text" name="destination" th:value="${searchTerm}" placeholder="Search destination..." />
+            <button type="submit">Search</button>
+        </form>
+
+        <div class="card-grid">
+            <div class="card" th:each="pkg : ${packages}">
+                <img th:src="${pkg.imageUrl}" alt="destination" onerror="this.style.display='none'"/>
+                <div class="card-body">
+                    <h3 th:text="${pkg.destination}">Destination</h3>
+                    <p th:text="${pkg.description}">Description</p>
+                    <p style="font-size:13px;color:#94a3b8;" th:text="${pkg.durationDays} + ' days'">5 days</p>
+                    <div class="price">&#8377; <span th:text="${pkg.price}">0</span> / person</div>
+                    <a class="btn" th:href="@{'/booking/new/' + ${pkg.id}}">Book now</a>
+                </div>
+            </div>
+        </div>
+        <p th:if="${#lists.isEmpty(packages)}" style="margin-top:20px;">No packages found for that destination.</p>
+    </div>
+</body>
+</html>

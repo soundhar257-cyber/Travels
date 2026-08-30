@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage packages - TravelGo</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div th:replace="~{fragments/nav :: nav}"></div>
+
+    <div class="container">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <h2>Manage packages</h2>
+            <a class="btn" href="/admin/packages/new">+ Add package</a>
+        </div>
+        <table>
+            <tr><th>Destination</th><th>Price</th><th>Duration</th><th>Actions</th></tr>
+            <tr th:each="pkg : ${packages}">
+                <td th:text="${pkg.destination}"></td>
+                <td>&#8377; <span th:text="${pkg.price}"></span></td>
+                <td th:text="${pkg.durationDays} + ' days'"></td>
+                <td><a href="#" th:href="@{'/admin/packages/delete/' + ${pkg.id}}" class="btn danger" onclick="return confirm('Delete this package?')">Delete</a></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

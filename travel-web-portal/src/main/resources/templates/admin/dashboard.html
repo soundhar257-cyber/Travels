@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin dashboard - TravelGo</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div th:replace="~{fragments/nav :: nav}"></div>
+
+    <div class="container">
+        <h2>Admin dashboard</h2>
+        <div class="stats">
+            <div class="stat-card"><div class="num" th:text="${totalPackages}">0</div><div class="label">Packages</div></div>
+            <div class="stat-card"><div class="num" th:text="${totalBookings}">0</div><div class="label">Bookings</div></div>
+            <div class="stat-card"><div class="num" th:text="${totalUsers}">0</div><div class="label">Users</div></div>
+        </div>
+        <div style="margin-top:30px; display:flex; gap:12px;">
+            <a class="btn" href="/admin/packages">Manage packages</a>
+            <a class="btn secondary" href="/admin/bookings">Manage bookings</a>
+            <a class="btn secondary" href="/admin/users">Manage users</a>
+        </div>
+    </div>
+</body>
+</html>

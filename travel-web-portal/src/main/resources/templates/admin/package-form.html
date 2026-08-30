@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add package - TravelGo</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div th:replace="~{fragments/nav :: nav}"></div>
+
+    <form class="styled-form" action="/admin/packages/save" method="post" th:object="${travelPackage}">
+        <h2>Add a new package</h2>
+
+        <label>Destination</label>
+        <input type="text" th:field="*{destination}" required />
+
+        <label>Description</label>
+        <textarea th:field="*{description}" rows="3" required></textarea>
+
+        <label>Price (per person)</label>
+        <input type="number" step="0.01" th:field="*{price}" required />
+
+        <label>Duration (days)</label>
+        <input type="number" th:field="*{durationDays}" required />
+
+        <label>Image URL</label>
+        <input type="text" th:field="*{imageUrl}" placeholder="https://..." />
+
+        <button class="btn" type="submit" style="width:100%">Save package</button>
+    </form>
+</body>
+</html>

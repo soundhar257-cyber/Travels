@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My bookings - TravelGo</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div th:replace="~{fragments/nav :: nav}"></div>
+
+    <div class="container">
+        <h2>My bookings</h2>
+        <table>
+            <tr><th>Destination</th><th>Travel date</th><th>Travelers</th><th>Total</th><th>Status</th></tr>
+            <tr th:each="b : ${bookings}">
+                <td th:text="${b.travelPackage.destination}"></td>
+                <td th:text="${b.travelDate}"></td>
+                <td th:text="${b.numberOfTravelers}"></td>
+                <td>&#8377; <span th:text="${b.totalAmount}"></span></td>
+                <td><span class="badge" th:classappend="${b.status.toLowerCase()}" th:text="${b.status}"></span></td>
+            </tr>
+        </table>
+        <p th:if="${#lists.isEmpty(bookings)}" style="margin-top:16px;">You haven't booked any trips yet.</p>
+    </div>
+</body>
+</html>

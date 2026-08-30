@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmed - TravelGo</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div th:replace="~{fragments/nav :: nav}"></div>
+
+    <div class="container">
+        <div class="success" style="max-width:500px;margin:40px auto;padding:20px;">
+            <h2 style="margin-bottom:10px;">Booking confirmed!</h2>
+            <p>Destination: <strong th:text="${booking.travelPackage.destination}"></strong></p>
+            <p>Travel date: <strong th:text="${booking.travelDate}"></strong></p>
+            <p>Total paid: &#8377; <strong th:text="${booking.totalAmount}"></strong></p>
+            <a class="btn" href="/booking/my" style="margin-top:16px;">View my bookings</a>
+        </div>
+    </div>
+</body>
+</html>

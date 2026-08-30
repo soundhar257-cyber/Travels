@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>TravelGo - Find your next trip</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div th:replace="~{fragments/nav :: nav}"></div>
+
+    <section class="hero">
+        <h1>Explore the world with TravelGo</h1>
+        <p>Handpicked travel packages, easy booking, secure payments.</p>
+        <form class="search-bar" action="/packages" method="get">
+            <input type="text" name="destination" placeholder="Search destination e.g. Goa, Kerala..." />
+            <button type="submit">Search</button>
+        </form>
+    </section>
+
+    <div class="container">
+        <h2>Featured packages</h2>
+        <div class="card-grid">
+            <div class="card" th:each="pkg : ${packages}">
+                <img th:src="${pkg.imageUrl}" alt="destination" onerror="this.style.display='none'"/>
+                <div class="card-body">
+                    <h3 th:text="${pkg.destination}">Destination</h3>
+                    <p th:text="${pkg.description}">Description</p>
+                    <div class="price">&#8377; <span th:text="${pkg.price}">0</span> / person</div>
+                    <a class="btn" th:href="@{'/packages/' + ${pkg.id}}">View details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

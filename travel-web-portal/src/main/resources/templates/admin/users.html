@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage users - TravelGo</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div th:replace="~{fragments/nav :: nav}"></div>
+
+    <div class="container">
+        <h2>All users</h2>
+        <table>
+            <tr><th>Name</th><th>Email</th><th>Phone</th><th>Role</th></tr>
+            <tr th:each="u : ${users}">
+                <td th:text="${u.fullName}"></td>
+                <td th:text="${u.email}"></td>
+                <td th:text="${u.phone}"></td>
+                <td th:text="${u.role}"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
